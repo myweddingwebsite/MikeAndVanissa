@@ -1,0 +1,984 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mike & Vanissa's Wedding</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Alex+Brush&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,400&family=Montserrat:wght@300;400;500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <style>
+        :root {
+            --primary-sage: #A8BBA3;
+            --deep-olive: #556B2F;
+            --gold-champagne: #D4AF37;
+            --nude-blush: #E8CFC4;
+            --bg-beige: #F5F0E6;
+            --soft-ivory: #FAF9F6;
+            --dark-text: #2C3E2B;
+            --card-text-muted: #7A6F5D; /* Inspired by the image text color */
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Cormorant Garamond', serif;
+            background-color: var(--soft-ivory);
+            color: var(--dark-text);
+            overflow-x: hidden;
+            font-size: 1.2rem;
+        }
+
+        h1, h2, h3, .script-font {
+            font-family: 'Alex Brush', cursive;
+        }
+
+        h2 {
+            font-size: 3.5rem;
+            color: var(--deep-olive);
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+
+        p {
+            font-family: 'Cormorant Garamond', serif;
+            font-weight: 400;
+            line-height: 1.6;
+        }
+
+        .sans-font {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 0.9rem;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+
+        /* Linen texture look matching uploaded images */
+        .linen-bg {
+            background-color: var(--bg-beige);
+            background-image: radial-gradient(rgba(0,0,0,0.03) 1px, transparent 0);
+            background-size: 4px 4px;
+        }
+
+        /* Layout & Shared Elements */
+        section {
+            padding: 5rem 10%;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 0.8rem 2rem;
+            background-color: var(--deep-olive);
+            color: white;
+            text-decoration: none;
+            font-family: 'Montserrat', sans-serif;
+            font-size: 0.85rem;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            border-radius: 4px;
+            transition: all 0.3s ease;
+            border: 1px solid transparent;
+            cursor: pointer;
+            margin-top: 1rem;
+        }
+
+        .btn:hover {
+            background-color: transparent;
+            color: var(--deep-olive);
+            border-color: var(--deep-olive);
+            transform: translateY(-2px);
+        }
+
+        /* Hero Section */
+        #hero {
+            height: 100vh;
+            background: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.2)), url('https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?auto=format&fit=crop&w=1920&q=80') no-center/cover no-repeat fixed;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            color: white;
+            padding: 0 1rem;
+        }
+
+        #hero h1 {
+            font-size: 6rem;
+            margin-bottom: 0.5rem;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+            color: var(--soft-ivory);
+        }
+
+        #hero .ampersand {
+            font-size: 3rem;
+            display: block;
+            margin: -1rem 0;
+            font-family: 'Cormorant Garamond', serif;
+            font-style: italic;
+        }
+
+        #hero p {
+            font-size: 1.5rem;
+            margin-bottom: 1.5rem;
+            letter-spacing: 1px;
+        }
+
+        #hero .tagline {
+            font-size: 1.3rem;
+            max-width: 600px;
+            font-style: italic;
+            opacity: 0.9;
+            margin: 2rem 0;
+        }
+
+        /* Countdown */
+        .countdown-container {
+            display: flex;
+            gap: 1.5rem;
+            margin-top: 2rem;
+            background: rgba(255, 255, 255, 0.15);
+            padding: 1.5rem 2.5rem;
+            border-radius: 8px;
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+
+        .countdown-item {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .countdown-item span:first-child {
+            font-size: 2.5rem;
+            font-weight: 300;
+            font-family: 'Montserrat', sans-serif;
+        }
+
+        .countdown-item span:last-child {
+            font-size: 0.75rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-top: 0.2rem;
+            opacity: 0.8;
+        }
+
+        /* Navigation */
+        nav {
+            position: sticky;
+            top: 0;
+            background: rgba(250, 249, 246, 0.95);
+            padding: 1rem 0;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+            z-index: 1000;
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 1.5rem;
+            border-bottom: 1px solid rgba(85, 107, 47, 0.1);
+        }
+
+        nav a {
+            text-decoration: none;
+            color: var(--dark-text);
+            font-family: 'Montserrat', sans-serif;
+            font-size: 0.8rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            transition: color 0.3s;
+            font-weight: 400;
+        }
+
+        nav a:hover {
+            color: var(--primary-sage);
+        }
+
+        /* Our Story */
+        .story-timeline {
+            position: relative;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .story-card {
+            background: white;
+            padding: 2.5rem;
+            border-radius: 8px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.02);
+            margin-bottom: 2rem;
+            border-left: 4px solid var(--primary-sage);
+            text-align: center;
+        }
+
+        .story-card h3 {
+            font-size: 2.5rem;
+            color: var(--deep-olive);
+            margin-bottom: 0.5rem;
+        }
+
+        /* Wedding Details */
+        .details-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 3rem;
+        }
+
+        .venue-card {
+            background: white;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.03);
+            border: 1px solid rgba(85, 107, 47, 0.08);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+            padding: 3rem 2rem;
+        }
+
+        .venue-card i {
+            font-size: 2.5rem;
+            color: var(--gold-champagne);
+            margin-bottom: 1.5rem;
+        }
+
+        .venue-card h3 {
+            font-size: 2.8rem;
+            color: var(--deep-olive);
+            margin-bottom: 1rem;
+        }
+
+        .venue-card .location-sub {
+            font-family: 'Montserrat', sans-serif;
+            text-transform: uppercase;
+            font-size: 0.85rem;
+            letter-spacing: 1px;
+            color: var(--card-text-muted);
+            margin-bottom: 1rem;
+        }
+
+        .map-placeholder {
+            width: 100%;
+            height: 200px;
+            background: #eef1ed;
+            margin: 1.5rem 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #888;
+            font-size: 0.9rem;
+            border-radius: 6px;
+        }
+
+        /* Timeline Section */
+        .v-timeline {
+            position: relative;
+            max-width: 700px;
+            margin: 0 auto;
+            padding: 2rem 0;
+        }
+
+        .v-timeline::before {
+            content: '';
+            position: absolute;
+            left: 50%;
+            top: 0;
+            bottom: 0;
+            width: 1px;
+            background: var(--primary-sage);
+            transform: translateX(-50%);
+        }
+
+        .timeline-item {
+            position: relative;
+            margin-bottom: 3rem;
+            width: 50%;
+            padding: 0 2rem;
+        }
+
+        .timeline-item:nth-child(odd) {
+            left: 0;
+            text-align: right;
+        }
+
+        .timeline-item:nth-child(even) {
+            left: 50%;
+            text-align: left;
+        }
+
+        .timeline-dot {
+            position: absolute;
+            top: 5px;
+            width: 16px;
+            height: 16px;
+            border-radius: 50%;
+            background: var(--gold-champagne);
+            border: 3px solid white;
+            z-index: 2;
+        }
+
+        .timeline-item:nth-child(odd) .timeline-dot {
+            right: -8px;
+        }
+
+        .timeline-item:nth-child(even) .timeline-dot {
+            left: -8px;
+        }
+
+        .timeline-time {
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 500;
+            color: var(--deep-olive);
+            font-size: 1rem;
+            margin-bottom: 0.3rem;
+        }
+
+        .timeline-title {
+            font-size: 1.8rem;
+            color: var(--dark-text);
+            margin-bottom: 0.3rem;
+        }
+
+        /* Entourage Section */
+        .entourage-category {
+            margin-bottom: 4rem;
+            text-align: center;
+        }
+
+        .entourage-category h3 {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 1.1rem;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            color: var(--deep-olive);
+            margin-bottom: 1.5rem;
+            position: relative;
+            display: inline-block;
+            padding-bottom: 0.5rem;
+        }
+
+        .entourage-category h3::after {
+            content: '';
+            position: absolute;
+            width: 50%;
+            height: 1px;
+            background: var(--gold-champagne);
+            bottom: 0;
+            left: 25%;
+        }
+
+        .entourage-grid {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 2rem;
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        .entourage-name {
+            font-size: 1.4rem;
+            background: white;
+            padding: 0.8rem 2rem;
+            border-radius: 30px;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.02);
+            border: 1px solid rgba(85, 107, 47, 0.05);
+        }
+
+        .entourage-pair {
+            display: flex;
+            flex-direction: column;
+            gap: 0.3rem;
+            background: white;
+            padding: 1rem 2.5rem;
+            border-radius: 8px;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.02);
+        }
+
+        .entourage-pair span {
+            font-size: 1.3rem;
+        }
+
+        .entourage-pair span:nth-child(2) {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 0.75rem;
+            color: var(--gold-champagne);
+        }
+
+        /* Attire Section */
+        .attire-container {
+            background: white;
+            border-radius: 12px;
+            padding: 4rem 2rem;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.02);
+            text-align: center;
+        }
+
+        .color-palette {
+            display: flex;
+            justify-content: center;
+            gap: 1.5rem;
+            margin: 2rem 0 3rem 0;
+            flex-wrap: wrap;
+        }
+
+        .color-swatch {
+            width: 70px;
+            height: 70px;
+            border-radius: 50%;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+            position: relative;
+        }
+
+        .color-swatch span {
+            position: absolute;
+            bottom: -25px;
+            left: 50%;
+            transform: translateX(-50%);
+            font-size: 0.75rem;
+            font-family: 'Montserrat', sans-serif;
+            white-space: nowrap;
+        }
+
+        .attire-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+            gap: 2.5rem;
+            text-align: left;
+            margin-top: 2rem;
+        }
+
+        .attire-block h4 {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 0.9rem;
+            letter-spacing: 2px;
+            color: var(--deep-olive);
+            text-transform: uppercase;
+            margin-bottom: 1rem;
+            border-bottom: 1px solid var(--bg-beige);
+            padding-bottom: 0.5rem;
+        }
+
+        .attire-block ul {
+            list-style: none;
+        }
+
+        .attire-block ul li {
+            margin-bottom: 0.5rem;
+            position: relative;
+            padding-left: 1.2rem;
+        }
+
+        .attire-block ul li::before {
+            content: '•';
+            color: var(--gold-champagne);
+            position: absolute;
+            left: 0;
+        }
+
+        /* Gift & Shared Section */
+        .centered-content {
+            max-width: 700px;
+            margin: 0 auto;
+            text-align: center;
+            background: white;
+            padding: 3.5rem 2rem;
+            border-radius: 12px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.02);
+        }
+
+        .gift-msg {
+            font-style: italic;
+            font-size: 1.3rem;
+            margin-bottom: 2rem;
+        }
+
+        .gift-methods {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            margin-top: 2rem;
+            flex-wrap: wrap;
+        }
+
+        .gift-box {
+            border: 1px dashed var(--primary-sage);
+            padding: 1.5rem;
+            border-radius: 6px;
+            min-width: 200px;
+        }
+
+        /* FAQ Section */
+        .faq-container {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .faq-item {
+            background: white;
+            margin-bottom: 1.5rem;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.01);
+            overflow: hidden;
+        }
+
+        .faq-question {
+            padding: 1.5rem;
+            font-size: 1.3rem;
+            font-weight: 600;
+            color: var(--deep-olive);
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .faq-answer {
+            padding: 0 1.5rem 1.5rem 1.5rem;
+            color: #555;
+            display: block; /* Kept open naturally or controlled via JS */
+        }
+
+        /* Footer */
+        footer {
+            background: var(--deep-olive);
+            color: white;
+            text-align: center;
+            padding: 4rem 1rem;
+        }
+
+        footer h2 {
+            color: var(--soft-ivory);
+            margin-bottom: 0.5rem;
+        }
+
+        footer p {
+            font-size: 1.4rem;
+            font-style: italic;
+            opacity: 0.9;
+        }
+
+        .back-to-top {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background: var(--gold-champagne);
+            color: white;
+            width: 45px;
+            height: 45px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-decoration: none;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+            transition: all 0.3s;
+            z-index: 999;
+        }
+
+        .back-to-top:hover {
+            transform: translateY(-5px);
+            background: var(--deep-olive);
+        }
+
+        /* Responsive Fixes */
+        @media (max-width: 768px) {
+            #hero h1 { font-size: 4rem; }
+            h2 { font-size: 2.8rem; }
+            .v-timeline::before { left: 20px; }
+            .timeline-item { width: 100%; left: 0 !important; text-align: left !important; padding-left: 50px; }
+            .timeline-item:nth-child(odd) .timeline-dot, .timeline-item:nth-child(even) .timeline-dot { left: 12px; right: auto; }
+            section { padding: 4rem 5%; }
+        }
+    </style>
+</head>
+<body>
+
+    <header id="hero">
+        <p class="sans-font">Welcome to our Beginning</p>
+        <h1>Mike<br><span class="ampersand">&</span><br>Vanissa</h1>
+        <p>September 25, 2026 | 2:00 PM</p>
+        <p class="tagline">"Together with our families, we joyfully invite you to celebrate our wedding day."</p>
+        <p class="sans-font" style="font-size: 0.8rem;">#VanissaLovesHerMike</p>
+        
+        <div class="countdown-container">
+            <div class="countdown-item"><span id="days">00</span><span>Days</span></div>
+            <div class="countdown-item"><span id="hours">00</span><span>Hours</span></div>
+            <div class="countdown-item"><span id="minutes">00</span><span>Minutes</span></div>
+            <div class="countdown-item"><span id="seconds">00</span><span>Seconds</span></div>
+        </div>
+    </header>
+
+    <nav>
+        <a href="#hero">Home</a>
+        <a href="#story">Our Story</a>
+        <a href="#details">Details</a>
+        <a href="#timeline">Timeline</a>
+        <a href="#entourage">Entourage</a>
+        <a href="#attire">Attire</a>
+        <a href="#gifts">Gifts</a>
+        <a href="#gallery">Gallery</a>
+        <a href="#rsvp">RSVP</a>
+        <a href="#faq">FAQ</a>
+    </nav>
+
+    <section id="story" class="linen-bg">
+        <div class="container">
+            <h2>Our Story</h2>
+            <div class="story-timeline">
+                <div class="story-card">
+                    <h3>How We Met</h3>
+                    <p>[Placeholder: Edit your romantic introduction narrative here. Describe the beautiful coincidence or moment your paths crossed.]</p>
+                </div>
+                <div class="story-card">
+                    <h3>Our Journey</h3>
+                    <p>[Placeholder: Edit details about your milestones, shared dreams, growing love, and structural memories created together.]</p>
+                </div>
+                <div class="story-card">
+                    <h3>The Proposal</h3>
+                    <p>[Placeholder: Talk about the beautiful day the question was popped, the surprise, and the definitive "Yes!"]</p>
+                </div>
+                <div class="story-card">
+                    <h3>The Beginning of Forever</h3>
+                    <p>[Placeholder: Add your concluding love declarations and anticipation towards the walking down the aisle.]</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="details">
+        <div class="container">
+            <h2>Wedding Details</h2>
+            <div class="details-grid">
+                <div class="venue-card">
+                    <i class="fa-solid fa-church"></i>
+                    <h3>Sacred Heart Chapel Camp Fabia</h3>
+                    <p class="location-sub">Manolo Fortich, Bukidnon</p>
+                    <p>"A quaint chapel nestled in the heart of the tranquil forests of Bukidnon."</p>
+                    <div class="map-placeholder"><i class="fa-solid fa-map-location-dot" style="margin:0 10px 0 0; font-size:1.2rem; color:#aaa;"></i> Google Maps Block Placeholder</div>
+                    <a href="#" class="btn" target="_blank">View on Google Maps</a>
+                </div>
+                <div class="venue-card">
+                    <i class="fa-solid fa-tree"></i>
+                    <h3>Mountain Pines Place</h3>
+                    <p class="location-sub">Dahilayan, Bukidnon</p>
+                    <p>"A scenic mountain venue surrounded by majestic pine trees and breathtaking views of Bukidnon’s lush highlands."</p>
+                    <div class="map-placeholder"><i class="fa-solid fa-map-location-dot" style="margin:0 10px 0 0; font-size:1.2rem; color:#aaa;"></i> Google Maps Block Placeholder</div>
+                    <a href="#" class="btn" target="_blank">View on Google Maps</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="timeline" class="linen-bg">
+        <div class="container">
+            <h2>Wedding Timeline</h2>
+            <div class="v-timeline">
+                <div class="timeline-item">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-time">2:00 PM</div>
+                    <div class="timeline-title">We Say "I Do"</div>
+                    <p>Wedding Ceremony</p>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-time">3:00 PM</div>
+                    <div class="timeline-title">We Smile and Snap</div>
+                    <p>Photo Opportunities</p>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-time">5:00 PM</div>
+                    <div class="timeline-title">We Mingle</div>
+                    <p>Cocktail Hour</p>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-time">6:00 PM</div>
+                    <div class="timeline-title">We Celebrate</div>
+                    <p>Program and Dinner</p>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-time">9:00 PM</div>
+                    <div class="timeline-title">We Party</div>
+                    <p>Party Time</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="entourage">
+        <div class="container">
+            <h2>The Wedding Entourage</h2>
+            
+            <div class="entourage-category">
+                <h3>Parents of the Groom</h3>
+                <div class="entourage-grid">
+                    <div class="entourage-name">Mr. Lucito Ocampo Gopez †</div>
+                    <div class="entourage-name">Mrs. Coralee Galang Gopez</div>
+                </div>
+            </div>
+
+            <div class="entourage-category">
+                <h3>Parents of the Bride</h3>
+                <div class="entourage-grid">
+                    <div class="entourage-name">Mr. Peter Auditor Escolano</div>
+                    <div class="entourage-name">Mrs. Merceditha Torayno Escolano</div>
+                </div>
+            </div>
+
+            <div class="entourage-category">
+                <h3>Principal Sponsors</h3>
+                <div class="entourage-grid">
+                    <div class="entourage-pair"><span>Mr. Arthur Alampayan</span><span>&</span><span>Mrs. Remedios Alampayan</span></div>
+                    <div class="entourage-pair"><span>Mr. Richelle Nuez</span><span>&</span><span>Mrs. Enrelita Yaba</span></div>
+                    <div class="entourage-pair"><span>Hon. Edwin Abucayan</span><span>&</span><span>Engr. Alma Dahino</span></div>
+                    <div class="entourage-pair"><span>Mr. Joel Galang</span><span>&</span><span>Mrs. Geraldine Galang</span></div>
+                    <div class="entourage-pair"><span>Mr. Bernie Jabiniao</span><span>&</span><span>Mrs. Nelda Salcedo</span></div>
+                    <div class="entourage-pair"><span>Mr. Pedro Gopez</span><span>&</span><span>Mrs. Alice Gopez</span></div>
+                    <div class="entourage-pair"><span>Mr. Henry Torayno</span><span>&</span><span>Mrs. Marina Torayno</span></div>
+                    <div class="entourage-pair"><span>Mr. Reynaldo Gopez</span><span>&</span><span>Mrs. Gloria De Guzman</span></div>
+                    <div class="entourage-pair"><span>Mr. Arnold Tamayo</span><span>&</span><span>Mrs. Alice Torayno</span></div>
+                    <div class="entourage-pair"><span>Mr. Wilfredo Jagape</span><span>&</span><span>Mrs. Rosalina Jagape</span></div>
+                    <div class="entourage-pair"><span>Mr. Vicente Jumawan</span><span>&</span><span>Mrs. Susan Jumawan</span></div>
+                </div>
+            </div>
+
+            <div class="entourage-category">
+                <h3>Best Man & Maids of Honor</h3>
+                <div class="entourage-grid">
+                    <div class="entourage-name"><small style="display:block; font-size:0.7rem; color:var(--gold-champagne); font-family:'Montserrat';">BEST MAN</small>John Louie Gopez</div>
+                    <div class="entourage-name"><small style="display:block; font-size:0.7rem; color:var(--gold-champagne); font-family:'Montserrat';">MAID OF HONOR</small>Vallerie Joy Escolano</div>
+                    <div class="entourage-name"><small style="display:block; font-size:0.7rem; color:var(--gold-champagne); font-family:'Montserrat';">MAID OF HONOR</small>Veianne Jean Escolano</div>
+                </div>
+            </div>
+
+            <div class="entourage-category">
+                <h3>Groomsmen</h3>
+                <div class="entourage-grid">
+                    <div class="entourage-name">King Arthur Alampayan</div>
+                    <div class="entourage-name">Jay Tamayo</div>
+                    <div class="entourage-name">Wowie Ramos</div>
+                    <div class="entourage-name">Kristian Sycil Jumawan</div>
+                    <div class="entourage-name">Julian Charles Goling</div>
+                    <div class="entourage-name">Joshua James Torayno</div>
+                </div>
+            </div>
+
+            <div class="entourage-category">
+                <h3>Bridesmaids</h3>
+                <div class="entourage-grid">
+                    <div class="entourage-name">Kristina Cassandra Torayno</div>
+                    <div class="entourage-name">Vanessa Lou Escolano</div>
+                    <div class="entourage-name">Ann Jezreel Apayong</div>
+                    <div class="entourage-name">Erlyn Panti</div>
+                    <div class="entourage-name">Princess Marie Pangilinan</div>
+                    <div class="entourage-name">Trisha Galang</div>
+                </div>
+            </div>
+
+            <div class="entourage-category">
+                <h3>Symbolic Sponsors</h3>
+                <div class="entourage-grid">
+                    <div class="entourage-pair"><span>Mr. Raul Arellano Jr. & Mrs. Sweetheart Arellano</span><span>Candle Sponsors</span></div>
+                    <div class="entourage-pair"><span>Mr. Ian Pedro Gopez & Mrs. Daisy Jane Gopez</span><span>Veil Sponsors</span></div>
+                    <div class="entourage-pair"><span>Mr. Reymart Joseph Alampayan & Mrs. Denah Alampayan</span><span>Cord Sponsors</span></div>
+                </div>
+            </div>
+
+            <div class="entourage-category">
+                <h3>Children of the Court</h3>
+                <div class="entourage-grid">
+                    <div class="entourage-name"><small style="display:block; font-size:0.7rem; color:var(--gold-champagne); font-family:'Montserrat';">BIBLE BEARER</small>Vance Zackyrie Escolano</div>
+                    <div class="entourage-name"><small style="display:block; font-size:0.7rem; color:var(--gold-champagne); font-family:'Montserrat';">COIN BEARER</small>Anawim Dian Gopez</div>
+                    <div class="entourage-name"><small style="display:block; font-size:0.7rem; color:var(--gold-champagne); font-family:'Montserrat';">RING BEARER</small>Clark Joshua Carpentero</div>
+                    <div class="entourage-name"><small style="display:block; font-size:0.7rem; color:var(--gold-champagne); font-family:'Montserrat';">BANNER BEARER</small>Avani Daian Gopez</div>
+                </div>
+                <h4 class="sans-font" style="margin-top:2rem; font-size:0.8rem; color:var(--deep-olive);">Flower Girls</h4>
+                <div class="entourage-grid" style="margin-top:1rem;">
+                    <div class="entourage-name">Nina Khaleesi Alampayan</div>
+                    <div class="entourage-name">Nyda Lloriene Fabre</div>
+                    <div class="entourage-name">Herley Jaze Brigoli</div>
+                    <div class="entourage-name">Kila Brei Echavez</div>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <section id="attire" class="linen-bg">
+        <div class="container">
+            <h2>Wedding Attire Guide</h2>
+            <div class="attire-container">
+                <p class="sans-font">Our Wedding Palette & Dress Code</p>
+                
+                <div class="color-palette">
+                    <div class="color-swatch" style="background-color: #A8BBA3;"><span>Sage Green</span></div>
+                    <div class="color-swatch" style="background-color: #556B2F;"><span>Deep Olive</span></div>
+                    <div class="color-swatch" style="background-color: #D4AF37;"><span>Champagne</span></div>
+                    <div class="color-swatch" style="background-color: #E8CFC4;"><span>Nude Blush</span></div>
+                    <div class="color-swatch" style="background-color: #F5F0E6;"><span>Beige</span></div>
+                </div>
+
+                <div class="attire-grid">
+                    <div class="attire-block">
+                        <h4>Bridal Party</h4>
+                        <ul>
+                            <li><strong>Maid of Honor:</strong> Sage Green</li>
+                            <li><strong>Bridesmaids:</strong> Deep Olive Green</li>
+                            <li><strong>Best Man & Groomsmen:</strong> Black Suit</li>
+                        </ul>
+                    </div>
+                    <div class="attire-block">
+                        <h4>Principal Sponsors</h4>
+                        <ul>
+                            <li><strong>Ninang:</strong> Long Formal Dress in Gold or Champagne Gold</li>
+                            <li><strong>Ninong:</strong> Barong Tagalog and Black Pants</li>
+                        </ul>
+                    </div>
+                    <div class="attire-block">
+                        <h4>Guests</h4>
+                        <ul>
+                            <li><strong>Female:</strong> Long Formal Dress in Nude Blush, Blush Taupe, Beige, or Champagne</li>
+                            <li><strong>Male:</strong> Long Sleeves, Blazer, Polo Button-Down, Dress Pants</li>
+                        </ul>
+                    </div>
+                    <div class="attire-block" style="border: 1px solid rgba(255,0,0,0.1); padding: 1rem; border-radius: 6px; background:#fff5f5;">
+                        <h4 style="color: #c0392b;">Kindly Avoid</h4>
+                        <ul style="color: #555;">
+                            <li>Denim & T-Shirts</li>
+                            <li>Athletic Wear</li>
+                            <li>White / Colors outside the wedding palette</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="gifts">
+        <div class="container">
+            <h2>Gift Guide</h2>
+            <div class="centered-content">
+                <p class="gift-msg">"Your presence and prayers on our special day are the greatest gifts we could ever ask for.<br><br>However, should you wish to honor us with a gift, a monetary blessing would be sincerely appreciated as we begin this new chapter of our lives together.<br><br>With all our hearts, thank you."</p>
+                
+                <div class="gift-methods">
+                    <div class="gift-box">
+                        <i class="fa-solid fa-qrcode" style="font-size: 2rem; color:var(--primary-sage); margin-bottom:0.5rem;"></i>
+                        <p class="sans-font" style="font-weight:600;">QR Code</p>
+                        <p style="font-size:0.9rem; color:#777;">[Placeholder Image]</p>
+                    </div>
+                    <div class="gift-box">
+                        <i class="fa-solid fa-bank" style="font-size: 2rem; color:var(--primary-sage); margin-bottom:0.5rem;"></i>
+                        <p class="sans-font" style="font-weight:600;">Bank Transfer</p>
+                        <p style="font-size:0.9rem; color:#777;">Account Placeholder</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="shared-memories" class="linen-bg" style="text-align:center;">
+        <div class="container">
+            <h2>Share Your Captured Moments</h2>
+            <div class="centered-content">
+                <p style="margin-bottom: 1.5rem;">"We would love to see the wedding through your eyes. Upload your favorite photos and videos from our special day."</p>
+                <a href="https://drive.google.com/drive/folders/1Drxib3Ve2CTF0Co0tLMLe03ZGAO8BStG" class="btn" target="_blank"><i class="fa-solid fa-cloud-arrow-up" style="margin-right:8px;"></i> Upload to Google Drive</a>
+            </div>
+        </div>
+    </section>
+
+    <section id="gallery">
+        <div class="container" style="text-align: center;">
+            <h2>Gallery</h2>
+            <p class="sans-font" style="color: var(--gold-champagne); font-weight: 500;">Prenup & Wedding Gallery</p>
+            <p style="font-style: italic; margin-top: 1rem; font-size: 1.5rem;">"Coming Soon"</p>
+        </div>
+    </section>
+
+    <section id="rsvp" class="linen-bg">
+        <div class="container" style="text-align: center;">
+            <h2>RSVP</h2>
+            <div class="centered-content" style="border: 1px solid var(--primary-sage);">
+                <p class="sans-font" style="color: var(--deep-olive); font-weight:600; margin-bottom: 0.5rem;">RSVP Deadline</p>
+                <p style="font-size: 2rem; margin-bottom: 1rem;">July 25, 2026</p>
+                <p style="font-style: italic; margin-bottom: 2rem;">"We kindly ask guests to RSVP before July 25, 2026."</p>
+                <a href="[INSERT RSVP LINK HERE]" class="btn" style="background-color: var(--gold-champagne); font-size: 1rem; padding: 1rem 3rem;">RSVP NOW</a>
+            </div>
+        </div>
+    </section>
+
+    <section id="faq">
+        <div class="container">
+            <h2>Frequently Asked Questions</h2>
+            <div class="faq-container">
+                <div class="faq-item">
+                    <div class="faq-question">What time should I arrive? <i class="fa-solid fa-chevron-down"></i></div>
+                    <div class="faq-answer">Please arrive at least 30 minutes before the ceremony starts. This will give you enough time to find parking, settle in, and be part of our special moment from the very beginning.</div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-question">Are plus-ones allowed? <i class="fa-solid fa-chevron-down"></i></div>
+                    <div class="faq-answer">As much as we'd love to have everyone there to celebrate with us, we're only able to accommodate guests who are on our list. We hope for your kind understanding as we keep our celebration intimate.</div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-question">Are kids allowed? <i class="fa-solid fa-chevron-down"></i></div>
+                    <div class="faq-answer">While we love children and consider them a true blessing, we respectfully request that our ceremony and reception be adults-only, unless a child has been specifically included in the invitation by the bride and groom.<br><br>We appreciate your understanding.</div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-question">Who should we contact for questions or concerns? <i class="fa-solid fa-chevron-down"></i></div>
+                    <div class="faq-answer">
+                        <strong>Bride (WhatsApp):</strong> +65 8424 4800<br>
+                        <strong>Groom (WhatsApp):</strong> +60 1877 9356
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <h2>Mike & Vanissa</h2>
+        <p>September 25, 2026</p>
+        <p style="font-size: 1.1rem; margin-top: 1rem; opacity: 0.7;">"Thank you for being part of our forever."</p>
+        <p class="sans-font" style="font-size: 0.75rem; margin-top: 2rem; letter-spacing: 2px;">#VanissaLovesHerMike</p>
+    </footer>
+
+    <a href="#hero" class="back-to-top"><i class="fa-solid fa-arrow-up"></i></a>
+
+    <script>
+        const weddingDate = new Date("September 25, 2026 14:00:00").getTime();
+
+        const timer = setInterval(function() {
+            const now = new Date().getTime();
+            const distance = weddingDate - now;
+
+            const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+            const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+            const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+            const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+            document.getElementById("days").innerText = days < 10 ? "0" + days : days;
+            document.getElementById("hours").innerText = hours < 10 ? "0" + hours : hours;
+            document.getElementById("minutes").innerText = minutes < 10 ? "0" + minutes : minutes;
+            document.getElementById("seconds").innerText = seconds < 10 ? "0" + seconds : seconds;
+
+            if (distance < 0) {
+                clearInterval(timer);
+                document.querySelector(".countdown-container").innerHTML = "<p class='sans-font'>The Big Day Has Arrived!</p>";
+            }
+        }, 1000);
+    </script>
+</body>
+</html>

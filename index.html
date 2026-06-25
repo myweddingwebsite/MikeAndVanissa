@@ -79,10 +79,7 @@
     color: var(--olive-dark); font-size: 0.7rem;
     flex-shrink: 0;
   }
-  /* pulsing ring only when paused/not-yet-started */
-  #music-prompt.not-playing .mp-icon {
-    animation: mpPulse 1.8s ease infinite;
-  }
+  #music-prompt.not-playing .mp-icon { animation: mpPulse 1.8s ease infinite; }
   @keyframes mpPulse {
     0%,100%{box-shadow:0 0 0 0 rgba(212,175,55,0.5)}
     50%{box-shadow:0 0 0 7px rgba(212,175,55,0)}
@@ -91,23 +88,15 @@
     font-family: var(--font-title); font-size: 0.58rem;
     letter-spacing: 0.15em; color: rgba(255,255,255,0.85);
   }
-  /* animated bars shown when playing */
-  #music-prompt .mp-bars {
-    display: none; align-items: flex-end; gap: 2px; height: 16px;
-  }
+  #music-prompt .mp-bars { display: none; align-items: flex-end; gap: 2px; height: 16px; }
   #music-prompt.playing .mp-bars { display: flex; }
   #music-prompt.playing .mp-text-label { display: none; }
-  #music-prompt .mp-bar {
-    width: 3px; background: var(--gold); border-radius: 2px;
-    animation: musicBar 0.8s ease infinite;
-  }
+  #music-prompt .mp-bar { width: 3px; background: var(--gold); border-radius: 2px; animation: musicBar 0.8s ease infinite; }
   #music-prompt .mp-bar:nth-child(1){height:8px;animation-delay:0s}
   #music-prompt .mp-bar:nth-child(2){height:14px;animation-delay:0.15s}
   #music-prompt .mp-bar:nth-child(3){height:10px;animation-delay:0.3s}
   #music-prompt .mp-bar:nth-child(4){height:16px;animation-delay:0.1s}
-  @keyframes musicBar {
-    0%,100%{transform:scaleY(0.4)} 50%{transform:scaleY(1)}
-  }
+  @keyframes musicBar { 0%,100%{transform:scaleY(0.4)} 50%{transform:scaleY(1)} }
 
   /* ===== NAVIGATION ===== */
   nav { position: fixed; top: 0; width: 100%; z-index: 1000; padding: 18px 40px; transition: var(--transition); display: flex; align-items: center; justify-content: space-between; }
@@ -210,13 +199,35 @@
   .entourage-group { margin-bottom: 52px; text-align: center; }
   .entourage-group-title { font-family: var(--font-title); font-size: 0.65rem; letter-spacing: 0.35em; color: var(--olive); text-transform: uppercase; padding-bottom: 10px; border-bottom: 1px solid rgba(168,187,163,0.4); margin-bottom: 20px; display: inline-block; }
   .entourage-names { font-family: var(--font-serif); font-size: 1.05rem; color: var(--text-dark); line-height: 2.2; }
-  .entourage-pair-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 0 48px; max-width: 640px; margin: 0 auto; text-align: center; }
+
+  /* Principal sponsors — always 2 columns on both mobile and desktop */
+  .entourage-pair-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0 48px;
+    max-width: 640px;
+    margin: 0 auto;
+    text-align: center;
+  }
   .entourage-pair-grid .entourage-names { font-size: 0.95rem; }
+
+  /* Parents row */
   .parents-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 40px; max-width: 600px; margin: 0 auto; }
   .parents-side { text-align: center; }
   .parents-side-label { font-family: var(--font-title); font-size: 0.58rem; letter-spacing: 0.25em; color: var(--sage); margin-bottom: 10px; }
   .parents-name { font-family: var(--font-serif); font-size: 1rem; color: var(--text-dark); line-height: 2; }
   .dagger { font-size: 0.75rem; color: var(--text-light); }
+
+  /* Single-column groups (Best Man and below) */
+  .entourage-single-col {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 40px;
+    max-width: 480px;
+    margin: 0 auto;
+  }
+  .entourage-single-col > div { width: 100%; text-align: center; }
 
   /* ===== ATTIRE ===== */
   #attire { background: var(--beige); }
@@ -231,7 +242,6 @@
   .attire-color { font-family: var(--font-serif); font-size: 1.05rem; font-weight: 600; color: var(--olive); margin-bottom: 4px; }
   .attire-detail { font-family: var(--font-serif); font-size: 0.85rem; font-style: italic; color: var(--text-mid); line-height: 1.6; }
   .attire-two-col { display: grid; grid-template-columns: 1fr 1fr; gap: 28px; }
-  .attire-four-col { display: grid; grid-template-columns: repeat(4,1fr); gap: 24px; }
   .attire-avoid { background: var(--white); border: 1px solid rgba(168,187,163,0.3); border-radius: var(--radius); max-width: 960px; margin: 40px auto 0; padding: 28px; text-align: center; }
   .attire-avoid-title { font-family: var(--font-title); font-size: 0.6rem; letter-spacing: 0.25em; color: #b55a5a; margin-bottom: 14px; }
   .attire-avoid-list { display: flex; flex-wrap: wrap; gap: 10px; justify-content: center; }
@@ -259,9 +269,6 @@
 
   /* ===== GALLERY ===== */
   #gallery { background: var(--beige); }
-  .gallery-tabs { display: flex; justify-content: center; border: 1px solid rgba(168,187,163,0.4); border-radius: 2px; overflow: hidden; max-width: 320px; margin: 0 auto 40px; }
-  .gallery-tab { flex: 1; padding: 12px; cursor: pointer; font-family: var(--font-title); font-size: 0.6rem; letter-spacing: 0.15em; text-align: center; background: var(--white); color: var(--text-light); border: none; transition: var(--transition); }
-  .gallery-tab.active { background: var(--olive); color: var(--white); }
   .gallery-grid { columns: 3; gap: 16px; max-width: 960px; margin: 0 auto; }
   .gallery-item { break-inside: avoid; margin-bottom: 16px; position: relative; overflow: hidden; border-radius: 2px; cursor: pointer; }
   .gallery-placeholder { background: linear-gradient(135deg,var(--sage) 0%,var(--olive) 100%); display: flex; align-items: center; justify-content: center; color: rgba(255,255,255,0.6); transition: var(--transition); }
@@ -277,9 +284,7 @@
   .rsvp-deadline-label { font-family: var(--font-title); font-size: 0.6rem; letter-spacing: 0.25em; color: var(--text-light); margin-bottom: 4px; }
   .rsvp-deadline { font-family: var(--font-script); font-size: 2.8rem; color: var(--olive); margin-bottom: 32px; }
   .rsvp-ornament { font-family: var(--font-serif); font-size: 1rem; color: var(--sage); margin-bottom: 24px; display: block; }
-  .btn-rsvp { display: inline-flex; align-items: center; gap: 10px; font-family: var(--font-title); font-size: 0.7rem; letter-spacing: 0.25em; text-transform: uppercase; color: var(--white); background: var(--olive); text-decoration: none; padding: 18px 48px; border-radius: 2px; border: 2px solid var(--olive); transition: var(--transition); margin-bottom: 24px; box-shadow: 0 8px 24px rgba(85,107,47,0.25); }
-  .btn-rsvp:hover { background: transparent; color: var(--olive); }
-  .rsvp-reminder { font-family: var(--font-serif); font-size: 0.9rem; font-style: italic; color: var(--text-light); line-height: 1.7; }
+  .rsvp-reminder { font-family: var(--font-serif); font-size: 0.9rem; font-style: italic; color: var(--text-light); line-height: 1.7; margin-top: 24px; }
 
   /* ===== FAQ ===== */
   #faq { background: var(--beige); }
@@ -308,8 +313,6 @@
   .footer-copy { font-family: var(--font-body); font-size: 0.7rem; color: rgba(255,255,255,0.3); }
   .footer-copy a { color: rgba(212,175,55,0.5); text-decoration: none; }
 
-  /* ===== BACK TO TOP (removed) ===== */
-
   /* ===== ANIMATIONS ===== */
   @keyframes fadeInUp { from{opacity:0;transform:translateY(24px)} to{opacity:1;transform:translateY(0)} }
   @keyframes fadeIn { from{opacity:0} to{opacity:1} }
@@ -322,25 +325,29 @@
     .nav-hamburger { display: flex; }
     .details-grid { grid-template-columns: 1fr; }
     .attire-two-col { grid-template-columns: 1fr 1fr; }
-    .attire-four-col { grid-template-columns: 1fr 1fr; }
     .gift-options { grid-template-columns: 1fr; }
     .gallery-grid { columns: 2; }
     .rsvp-card { padding: 40px 24px; }
-    .entourage-pair-grid { grid-template-columns: 1fr; }
-    .parents-grid { grid-template-columns: 1fr; }
+    /* parents still 2-col on tablet */
+    .parents-grid { grid-template-columns: 1fr 1fr; }
+    /* principal sponsors: keep 2 columns always */
+    .entourage-pair-grid { grid-template-columns: 1fr 1fr; gap: 0 24px; }
     section { padding: 70px 20px; }
     .hero-countdown { gap: 12px; }
-    /* Keep note reminders on one row on mobile */
     .note-reminders { flex-wrap: nowrap; gap: 20px; justify-content: center; }
     .note-reminder-item span { font-size: 0.5rem; letter-spacing: 0.1em; }
   }
   @media (max-width: 480px) {
     .attire-two-col { grid-template-columns: 1fr; }
-    .attire-four-col { grid-template-columns: 1fr 1fr; }
     .gallery-grid { columns: 1; }
     .hero-countdown .countdown-sep { display: none; }
     .note-reminders { gap: 12px; }
     .note-reminder-item span { font-size: 0.45rem; }
+    /* parents stack on very small screens */
+    .parents-grid { grid-template-columns: 1fr; }
+    /* principal sponsors: still 2 columns on small mobile */
+    .entourage-pair-grid { grid-template-columns: 1fr 1fr; gap: 0 16px; }
+    .entourage-pair-grid .entourage-names { font-size: 0.85rem; }
   }
 </style>
 </head>
@@ -449,8 +456,6 @@
   </div>
 </section>
 
-
-
 <!-- WEDDING DETAILS -->
 <section id="details">
   <div class="section-eyebrow reveal">The Celebration</div>
@@ -464,14 +469,10 @@
       <div class="venue-body">
         <div class="venue-type">Holy Matrimony</div>
         <div class="venue-name">Sacred Heart Chapel Camp Fabia</div>
-        <div class="venue-location">
-          <i class="fas fa-map-marker-alt"></i>
-          Manolo Fortich, Bukidnon
-        </div>
+        <div class="venue-location"><i class="fas fa-map-marker-alt"></i> Manolo Fortich, Bukidnon</div>
         <p class="venue-desc">"A quaint chapel nestled in the heart of the tranquil forests of Bukidnon."</p>
         <a href="https://maps.app.goo.gl/jXCEz9Nbcrr4drEK7" target="_blank" class="btn-map">
-          <i class="fas fa-map-marked-alt"></i>
-          View on Google Maps
+          <i class="fas fa-map-marked-alt"></i> View on Google Maps
         </a>
       </div>
     </div>
@@ -482,14 +483,10 @@
       <div class="venue-body">
         <div class="venue-type">Reception Dinner</div>
         <div class="venue-name">Mountain Pines Place</div>
-        <div class="venue-location">
-          <i class="fas fa-map-marker-alt"></i>
-          Dahilayan, Bukidnon
-        </div>
+        <div class="venue-location"><i class="fas fa-map-marker-alt"></i> Dahilayan, Bukidnon</div>
         <p class="venue-desc">"A scenic mountain venue surrounded by majestic pine trees and breathtaking views of Bukidnon's lush highlands."</p>
         <a href="https://maps.app.goo.gl/nJxEjPuCWxcuWenq9" target="_blank" class="btn-map">
-          <i class="fas fa-map-marked-alt"></i>
-          View on Google Maps
+          <i class="fas fa-map-marked-alt"></i> View on Google Maps
         </a>
       </div>
     </div>
@@ -503,47 +500,27 @@
   <div class="section-divider reveal"></div>
   <div class="timeline-wrap">
     <div class="timeline-item reveal">
-      <div class="timeline-content">
-        <div class="timeline-time">2:00 PM</div>
-        <div class="timeline-event">We Say "I Do"</div>
-        <div class="timeline-desc">Wedding Ceremony</div>
-      </div>
+      <div class="timeline-content"><div class="timeline-time">2:00 PM</div><div class="timeline-event">We Say "I Do"</div><div class="timeline-desc">Wedding Ceremony</div></div>
       <div class="timeline-icon-wrap"><div class="timeline-icon"><i class="fas fa-ring"></i></div></div>
       <div class="timeline-content"></div>
     </div>
     <div class="timeline-item reveal" style="transition-delay:0.1s">
-      <div class="timeline-content">
-        <div class="timeline-time">3:00 PM</div>
-        <div class="timeline-event">We Smile and Snap</div>
-        <div class="timeline-desc">Photo Opportunities</div>
-      </div>
+      <div class="timeline-content"><div class="timeline-time">3:00 PM</div><div class="timeline-event">We Smile and Snap</div><div class="timeline-desc">Photo Opportunities</div></div>
       <div class="timeline-icon-wrap"><div class="timeline-icon"><i class="fas fa-camera-retro"></i></div></div>
       <div class="timeline-content"></div>
     </div>
     <div class="timeline-item reveal" style="transition-delay:0.2s">
-      <div class="timeline-content">
-        <div class="timeline-time">5:00 PM</div>
-        <div class="timeline-event">We Mingle</div>
-        <div class="timeline-desc">Cocktail Hour</div>
-      </div>
+      <div class="timeline-content"><div class="timeline-time">5:00 PM</div><div class="timeline-event">We Mingle</div><div class="timeline-desc">Cocktail Hour</div></div>
       <div class="timeline-icon-wrap"><div class="timeline-icon"><i class="fas fa-champagne-glasses"></i></div></div>
       <div class="timeline-content"></div>
     </div>
     <div class="timeline-item reveal" style="transition-delay:0.3s">
-      <div class="timeline-content">
-        <div class="timeline-time">6:00 PM</div>
-        <div class="timeline-event">We Celebrate</div>
-        <div class="timeline-desc">Program and Dinner</div>
-      </div>
+      <div class="timeline-content"><div class="timeline-time">6:00 PM</div><div class="timeline-event">We Celebrate</div><div class="timeline-desc">Program and Dinner</div></div>
       <div class="timeline-icon-wrap"><div class="timeline-icon"><i class="fas fa-utensils"></i></div></div>
       <div class="timeline-content"></div>
     </div>
     <div class="timeline-item reveal" style="transition-delay:0.4s">
-      <div class="timeline-content">
-        <div class="timeline-time">9:00 PM</div>
-        <div class="timeline-event">We Party</div>
-        <div class="timeline-desc">Party Time</div>
-      </div>
+      <div class="timeline-content"><div class="timeline-time">9:00 PM</div><div class="timeline-event">We Party</div><div class="timeline-desc">Party Time</div></div>
       <div class="timeline-icon-wrap"><div class="timeline-icon"><i class="fas fa-music"></i></div></div>
       <div class="timeline-content"></div>
     </div>
@@ -557,6 +534,7 @@
   <div class="section-divider reveal"></div>
   <div class="entourage-inner">
 
+    <!-- Parents: 2 columns -->
     <div class="entourage-group reveal">
       <div class="parents-grid">
         <div class="parents-side">
@@ -572,6 +550,7 @@
       </div>
     </div>
 
+    <!-- Principal Sponsors: always 2 columns -->
     <div class="entourage-group reveal">
       <div class="entourage-group-title">Principal Sponsors</div>
       <p style="font-family:var(--font-serif);font-style:italic;font-size:0.9rem;color:var(--text-light);margin-bottom:20px;">to stand as witnesses to our vows</p>
@@ -590,8 +569,9 @@
       </div>
     </div>
 
+    <!-- Best Man & below: single column -->
     <div class="entourage-group reveal">
-      <div style="display:grid;grid-template-columns:1fr 1fr;gap:40px;max-width:580px;margin:0 auto;">
+      <div class="entourage-single-col">
         <div>
           <div class="entourage-group-title">Best Man</div>
           <div class="entourage-names">John Louie Gopez</div>
@@ -604,7 +584,7 @@
     </div>
 
     <div class="entourage-group reveal">
-      <div style="display:grid;grid-template-columns:1fr 1fr;gap:40px;max-width:700px;margin:0 auto;">
+      <div class="entourage-single-col">
         <div>
           <div class="entourage-group-title">Groomsmen</div>
           <div class="entourage-names">King Arthur Alampayan<br>Jay Tamayo<br>Wowie Ramos<br>Kristian Sycil Jumawan<br>Julian Charles Goling<br>Joshua James Torayno</div>
@@ -617,7 +597,7 @@
     </div>
 
     <div class="entourage-group reveal">
-      <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:32px;max-width:720px;margin:0 auto;">
+      <div class="entourage-single-col">
         <div>
           <div class="entourage-group-title">Candle Sponsors</div>
           <div class="entourage-names" style="font-size:0.9rem;">Mr. Raul Arellano Jr.<br>Mrs. Sweetheart Arellano</div>
@@ -634,7 +614,7 @@
     </div>
 
     <div class="entourage-group reveal">
-      <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:24px;max-width:800px;margin:0 auto;">
+      <div class="entourage-single-col">
         <div>
           <div class="entourage-group-title">Flower Girls</div>
           <div class="entourage-names" style="font-size:0.85rem;line-height:1.9;">Nina Khaleesi Alampayan<br>Nyda Lloriene Fabre<br>Herley Jaze Brigoli<br>Kila Brei Echavez</div>
@@ -648,8 +628,12 @@
           <div class="entourage-names" style="font-size:0.85rem;">Anawim Dian Gopez</div>
         </div>
         <div>
-          <div class="entourage-group-title">Ring &amp; Banner</div>
-          <div class="entourage-names" style="font-size:0.85rem;">Clark Joshua Carpentero<br>Avani Daian Gopez</div>
+          <div class="entourage-group-title">Ring Bearer</div>
+          <div class="entourage-names" style="font-size:0.85rem;">Clark Joshua Carpentero</div>
+        </div>
+        <div>
+          <div class="entourage-group-title">Banner Bearer</div>
+          <div class="entourage-names" style="font-size:0.85rem;">Avani Daian Gopez</div>
         </div>
       </div>
     </div>
@@ -663,7 +647,6 @@
   <h2 class="section-title reveal">Attire Guide</h2>
   <div class="section-divider reveal"></div>
 
-  <!-- Bridal Party -->
   <div class="attire-section-group reveal">
     <div class="attire-group-label">Principal and Secondary Sponsors</div>
     <div class="attire-two-col">
@@ -678,7 +661,7 @@
           <div class="attire-detail">Bridesmaids in deep olive green · Best Man and Groomsmen in black suit</div>
         </div>
       </div>
-       <div class="attire-image-card">
+      <div class="attire-image-card">
         <img src="https://raw.githubusercontent.com/myweddingwebsite/MikeAndVanissa/refs/heads/main/principal%20placeholder.jpg" alt="Principal Sponsors Attire">
         <div class="attire-body">
           <div class="attire-role">Ninang</div>
@@ -692,8 +675,6 @@
     </div>
   </div>
 
-
-  <!-- Guests -->
   <div class="attire-section-group reveal">
     <div class="attire-group-label">Guests</div>
     <div class="attire-two-col">
@@ -702,7 +683,7 @@
         <div class="attire-body">
           <div class="attire-role">Female Guests</div>
           <div class="attire-color">Nude Blush · Blush Taupe · Beige · Champagne</div>
-          <div class="attire-detail">Long formal dress in soft neutral tones</div>        
+          <div class="attire-detail">Long formal dress in soft neutral tones</div>
         </div>
       </div>
       <div class="attire-image-card">
@@ -716,7 +697,6 @@
     </div>
   </div>
 
-  <!-- Kindly Avoid -->
   <div class="attire-avoid reveal">
     <div class="attire-avoid-title"><i class="fas fa-ban"></i> &nbsp;KINDLY AVOID</div>
     <div class="attire-avoid-list">
@@ -794,12 +774,10 @@
   <div class="section-eyebrow reveal">Will You Join Us?</div>
   <h2 class="section-title reveal">RSVP</h2>
   <div class="section-divider reveal"></div>
-
   <div class="rsvp-card reveal">
     <div class="rsvp-deadline-label">RSVP DEADLINE</div>
     <div class="rsvp-deadline">July 25, 2026</div>
     <span class="rsvp-ornament">— ✦ —</span>
-
     <iframe
       src="https://script.google.com/macros/s/AKfycbwYmrIEtsiupETN4WqrziXIu8LjzUsBvIVTZRRrYpsgtWedhTQtP06Efrk5szEBTZ8Gjg/exec"
       width="100%"
@@ -807,10 +785,7 @@
       frameborder="0"
       loading="lazy">
     </iframe>
-
-    <p class="rsvp-reminder">
-      "We kindly ask guests to RSVP before July 25, 2026."
-    </p>
+    <p class="rsvp-reminder">"We kindly ask guests to RSVP before July 25, 2026."</p>
   </div>
 </section>
 
@@ -847,47 +822,23 @@
   <div class="section-divider reveal"></div>
   <div class="faq-list reveal">
     <div class="faq-item">
-      <div class="faq-question" onclick="toggleFaq(this)">
-        What time should I arrive?
-        <i class="fas fa-plus faq-icon"></i>
-      </div>
-      <div class="faq-answer">
-        <p>Please arrive at least 30 minutes before the ceremony starts. This will give you enough time to find parking, settle in, and be part of our special moment from the very beginning.</p>
-      </div>
+      <div class="faq-question" onclick="toggleFaq(this)">What time should I arrive?<i class="fas fa-plus faq-icon"></i></div>
+      <div class="faq-answer"><p>Please arrive at least 30 minutes before the ceremony starts. This will give you enough time to find parking, settle in, and be part of our special moment from the very beginning.</p></div>
     </div>
     <div class="faq-item">
-      <div class="faq-question" onclick="toggleFaq(this)">
-        Are plus-ones allowed?
-        <i class="fas fa-plus faq-icon"></i>
-      </div>
-      <div class="faq-answer">
-        <p>As much as we'd love to have everyone there to celebrate with us, we're only able to accommodate guests who are on our list. We hope for your kind understanding as we keep our celebration intimate.</p>
-      </div>
+      <div class="faq-question" onclick="toggleFaq(this)">Are plus-ones allowed?<i class="fas fa-plus faq-icon"></i></div>
+      <div class="faq-answer"><p>As much as we'd love to have everyone there to celebrate with us, we're only able to accommodate guests who are on our list. We hope for your kind understanding as we keep our celebration intimate.</p></div>
     </div>
     <div class="faq-item">
-      <div class="faq-question" onclick="toggleFaq(this)">
-        Are kids allowed?
-        <i class="fas fa-plus faq-icon"></i>
-      </div>
-      <div class="faq-answer">
-        <p>While we love children and consider them a true blessing, we respectfully request that our ceremony and reception be adults-only, unless a child has been specifically included in the invitation by the bride and groom. We appreciate your understanding.</p>
-      </div>
+      <div class="faq-question" onclick="toggleFaq(this)">Are kids allowed?<i class="fas fa-plus faq-icon"></i></div>
+      <div class="faq-answer"><p>While we love children and consider them a true blessing, we respectfully request that our ceremony and reception be adults-only, unless a child has been specifically included in the invitation by the bride and groom. We appreciate your understanding.</p></div>
     </div>
     <div class="faq-item">
-      <div class="faq-question" onclick="toggleFaq(this)">
-        Who should we contact for questions?
-        <i class="fas fa-plus faq-icon"></i>
-      </div>
+      <div class="faq-question" onclick="toggleFaq(this)">Who should we contact for questions?<i class="fas fa-plus faq-icon"></i></div>
       <div class="faq-answer">
         <div class="faq-contact">
-          <div class="faq-contact-item">
-            <i class="fab fa-whatsapp"></i>
-            <span><strong>Bride (Vanissa):</strong> WhatsApp +65 8424 4800</span>
-          </div>
-          <div class="faq-contact-item">
-            <i class="fab fa-whatsapp"></i>
-            <span><strong>Groom (Mike):</strong> WhatsApp +60 1877 9356</span>
-          </div>
+          <div class="faq-contact-item"><i class="fab fa-whatsapp"></i><span><strong>Bride (Vanissa):</strong> WhatsApp +65 8424 4800</span></div>
+          <div class="faq-contact-item"><i class="fab fa-whatsapp"></i><span><strong>Groom (Mike):</strong> WhatsApp +60 1877 9356</span></div>
         </div>
       </div>
     </div>
@@ -912,8 +863,6 @@
   </div>
 </footer>
 
-<!-- BACK TO TOP removed -->
-
 <script>
 // LOADER + AUDIO
 const bgMusic = document.getElementById('bgMusic');
@@ -925,12 +874,7 @@ window.addEventListener('load', () => {
     document.getElementById('loader').classList.add('hidden');
     document.getElementById('hero').classList.add('loaded');
   }, 1800);
-  // Try silent autoplay
-  bgMusic.play().then(() => {
-    setPlaying(true);
-  }).catch(() => {
-    // Blocked — prompt stays as "TAP TO PLAY MUSIC"
-  });
+  bgMusic.play().then(() => setPlaying(true)).catch(() => {});
 });
 
 function setPlaying(isPlaying) {
@@ -970,9 +914,7 @@ updateCountdown();
 
 // NAVBAR
 const navbar = document.getElementById('navbar');
-window.addEventListener('scroll', () => {
-  navbar.classList.toggle('scrolled', window.scrollY > 60);
-});
+window.addEventListener('scroll', () => navbar.classList.toggle('scrolled', window.scrollY > 60));
 
 // HAMBURGER
 document.getElementById('hamburger').addEventListener('click', () => document.getElementById('mobileMenu').classList.add('open'));
@@ -991,12 +933,6 @@ function toggleFaq(el) {
   const wasOpen = item.classList.contains('open');
   document.querySelectorAll('.faq-item').forEach(i => i.classList.remove('open'));
   if (!wasOpen) item.classList.add('open');
-}
-
-// GALLERY TABS
-function switchTab(btn, tab) {
-  document.querySelectorAll('.gallery-tab').forEach(t => t.classList.remove('active'));
-  btn.classList.add('active');
 }
 </script>
 </body>

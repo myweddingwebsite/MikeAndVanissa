@@ -56,28 +56,31 @@
   .loader-bar::after { content: ''; position: absolute; left: -100%; top: 0; width: 100%; height: 100%; background: var(--gold); animation: loadBar 1.5s ease 0.5s forwards; }
   @keyframes loadBar { to { left: 0; } }
 
-  /* ===== MUSIC PROMPT ===== */
+  /* ===== MUSIC BUTTON ===== */
   #music-prompt {
-    position: fixed; bottom: 80px; left: 50%; transform: translateX(-50%);
-    z-index: 8000;
+    position: fixed; bottom: 28px; right: 28px; z-index: 8000;
     background: rgba(61,78,34,0.92);
     backdrop-filter: blur(8px);
     border: 1px solid rgba(212,175,55,0.4);
     border-radius: 40px;
-    padding: 10px 20px 10px 14px;
+    padding: 10px 18px 10px 12px;
     display: flex; align-items: center; gap: 10px;
     cursor: pointer;
     opacity: 0; animation: fadeInUp 0.6s ease 2.2s forwards;
-    transition: opacity 0.4s ease;
+    transition: background 0.3s ease, box-shadow 0.3s ease;
     white-space: nowrap;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.25);
   }
-  #music-prompt.hide { opacity: 0; pointer-events: none; }
+  #music-prompt:hover { background: rgba(61,78,34,1); box-shadow: 0 6px 28px rgba(0,0,0,0.35); }
   #music-prompt .mp-icon {
-    width: 32px; height: 32px; border-radius: 50%;
+    width: 30px; height: 30px; border-radius: 50%;
     background: var(--gold);
     display: flex; align-items: center; justify-content: center;
-    color: var(--olive-dark); font-size: 0.75rem;
+    color: var(--olive-dark); font-size: 0.7rem;
     flex-shrink: 0;
+  }
+  /* pulsing ring only when paused/not-yet-started */
+  #music-prompt.not-playing .mp-icon {
     animation: mpPulse 1.8s ease infinite;
   }
   @keyframes mpPulse {
@@ -85,36 +88,26 @@
     50%{box-shadow:0 0 0 7px rgba(212,175,55,0)}
   }
   #music-prompt .mp-text {
-    font-family: var(--font-title); font-size: 0.6rem;
+    font-family: var(--font-title); font-size: 0.58rem;
     letter-spacing: 0.15em; color: rgba(255,255,255,0.85);
   }
-  /* music bars animation shown when playing */
-  #music-btn {
-    position: fixed; bottom: 28px; left: 28px; z-index: 500;
-    width: 44px; height: 44px;
-    background: var(--olive); border: none; border-radius: 50%;
-    display: flex; align-items: center; justify-content: center;
-    gap: 3px; cursor: pointer;
-    box-shadow: 0 4px 16px rgba(0,0,0,0.2);
-    transition: var(--transition);
+  /* animated bars shown when playing */
+  #music-prompt .mp-bars {
+    display: none; align-items: flex-end; gap: 2px; height: 16px;
   }
-  #music-btn:hover { background: var(--olive-dark); }
-  #music-btn .bar {
+  #music-prompt.playing .mp-bars { display: flex; }
+  #music-prompt.playing .mp-text-label { display: none; }
+  #music-prompt .mp-bar {
     width: 3px; background: var(--gold); border-radius: 2px;
     animation: musicBar 0.8s ease infinite;
   }
-  #music-btn .bar:nth-child(1){height:8px;animation-delay:0s}
-  #music-btn .bar:nth-child(2){height:14px;animation-delay:0.15s}
-  #music-btn .bar:nth-child(3){height:10px;animation-delay:0.3s}
-  #music-btn .bar:nth-child(4){height:16px;animation-delay:0.1s}
+  #music-prompt .mp-bar:nth-child(1){height:8px;animation-delay:0s}
+  #music-prompt .mp-bar:nth-child(2){height:14px;animation-delay:0.15s}
+  #music-prompt .mp-bar:nth-child(3){height:10px;animation-delay:0.3s}
+  #music-prompt .mp-bar:nth-child(4){height:16px;animation-delay:0.1s}
   @keyframes musicBar {
     0%,100%{transform:scaleY(0.4)} 50%{transform:scaleY(1)}
   }
-  #music-btn.paused .bar { animation: none; transform: scaleY(0.4); }
-  #music-btn.paused .bar:nth-child(1){height:12px}
-  #music-btn.paused .bar:nth-child(2){height:12px}
-  #music-btn.paused .bar:nth-child(3){height:12px}
-  #music-btn.paused .bar:nth-child(4){height:12px}
 
   /* ===== NAVIGATION ===== */
   nav { position: fixed; top: 0; width: 100%; z-index: 1000; padding: 18px 40px; transition: var(--transition); display: flex; align-items: center; justify-content: space-between; }
@@ -315,10 +308,7 @@
   .footer-copy { font-family: var(--font-body); font-size: 0.7rem; color: rgba(255,255,255,0.3); }
   .footer-copy a { color: rgba(212,175,55,0.5); text-decoration: none; }
 
-  /* ===== BACK TO TOP ===== */
-  #back-top { position: fixed; bottom: 28px; right: 28px; z-index: 500; width: 44px; height: 44px; background: var(--olive); color: var(--white); border: none; border-radius: 50%; cursor: pointer; display: flex; align-items: center; justify-content: center; font-size: 0.9rem; box-shadow: 0 4px 16px rgba(0,0,0,0.2); opacity: 0; visibility: hidden; transition: var(--transition); }
-  #back-top.visible { opacity: 1; visibility: visible; }
-  #back-top:hover { background: var(--olive-dark); }
+  /* ===== BACK TO TOP (removed) ===== */
 
   /* ===== ANIMATIONS ===== */
   @keyframes fadeInUp { from{opacity:0;transform:translateY(24px)} to{opacity:1;transform:translateY(0)} }
@@ -361,19 +351,17 @@
   <source src="https://raw.githubusercontent.com/myweddingwebsite/MikeAndVanissa/main/Enchanted.mp3" type="audio/mpeg">
 </audio>
 
-<!-- MUSIC PROMPT (shown on load) -->
-<div id="music-prompt" onclick="startMusic()">
+<!-- MUSIC TOGGLE (tap to play / pause) -->
+<div id="music-prompt" class="not-playing" onclick="toggleMusic()">
   <div class="mp-icon"><i class="fas fa-music"></i></div>
-  <span class="mp-text">TAP TO PLAY MUSIC</span>
+  <span class="mp-text mp-text-label">TAP TO PLAY MUSIC</span>
+  <div class="mp-bars">
+    <div class="mp-bar"></div>
+    <div class="mp-bar"></div>
+    <div class="mp-bar"></div>
+    <div class="mp-bar"></div>
+  </div>
 </div>
-
-<!-- MUSIC TOGGLE BUTTON -->
-<button id="music-btn" class="paused" onclick="toggleMusic()" aria-label="Toggle music" style="display:none;">
-  <div class="bar"></div>
-  <div class="bar"></div>
-  <div class="bar"></div>
-  <div class="bar"></div>
-</button>
 
 <!-- LOADER -->
 <div id="loader">
@@ -934,51 +922,43 @@
   </div>
 </footer>
 
-<!-- BACK TO TOP -->
-<button id="back-top" onclick="window.scrollTo({top:0,behavior:'smooth'})" aria-label="Back to top">
-  <i class="fas fa-chevron-up"></i>
-</button>
+<!-- BACK TO TOP removed -->
 
 <script>
 // LOADER + AUDIO
 const bgMusic = document.getElementById('bgMusic');
-const musicBtn = document.getElementById('music-btn');
 const musicPrompt = document.getElementById('music-prompt');
-let musicStarted = false;
+bgMusic.volume = 0.7;
 
 window.addEventListener('load', () => {
   setTimeout(() => {
     document.getElementById('loader').classList.add('hidden');
     document.getElementById('hero').classList.add('loaded');
   }, 1800);
-  // Try silent autoplay; if it works, skip the prompt
-  bgMusic.volume = 0.7;
+  // Try silent autoplay
   bgMusic.play().then(() => {
-    musicStarted = true;
-    musicPrompt.classList.add('hide');
-    musicBtn.style.display = 'flex';
-    musicBtn.classList.remove('paused');
+    setPlaying(true);
   }).catch(() => {
-    // Autoplay blocked — prompt will show (via CSS animation delay)
+    // Blocked — prompt stays as "TAP TO PLAY MUSIC"
   });
 });
 
-function startMusic() {
-  bgMusic.play().then(() => {
-    musicStarted = true;
-    musicPrompt.classList.add('hide');
-    musicBtn.style.display = 'flex';
-    musicBtn.classList.remove('paused');
-  });
+function setPlaying(isPlaying) {
+  if (isPlaying) {
+    musicPrompt.classList.remove('not-playing');
+    musicPrompt.classList.add('playing');
+  } else {
+    musicPrompt.classList.remove('playing');
+    musicPrompt.classList.add('not-playing');
+  }
 }
 
 function toggleMusic() {
   if (bgMusic.paused) {
-    bgMusic.play();
-    musicBtn.classList.remove('paused');
+    bgMusic.play().then(() => setPlaying(true));
   } else {
     bgMusic.pause();
-    musicBtn.classList.add('paused');
+    setPlaying(false);
   }
 }
 
@@ -998,11 +978,10 @@ function updateCountdown() {
 setInterval(updateCountdown, 1000);
 updateCountdown();
 
-// NAVBAR + BACK TO TOP
+// NAVBAR
 const navbar = document.getElementById('navbar');
 window.addEventListener('scroll', () => {
   navbar.classList.toggle('scrolled', window.scrollY > 60);
-  document.getElementById('back-top').classList.toggle('visible', window.scrollY > 400);
 });
 
 // HAMBURGER

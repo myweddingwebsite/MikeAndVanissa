@@ -434,25 +434,27 @@
     position: relative;
   }
   .timeline-wrap::before {
-    content: ''; position: absolute;
-    left: 50%; transform: translateX(-50%);
-    top: 0; bottom: 0; width: 1px;
-    background: linear-gradient(to bottom, transparent, var(--sage) 10%, var(--sage) 90%, transparent);
+  left: 22px; /* center of the circle */
+  transform: none;
+}
+  
   }
   .timeline-item {
-    display: flex; align-items: flex-start;
-    margin-bottom: 56px; position: relative;
-  }
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  margin-bottom: 40px;
+}
   .timeline-item:nth-child(odd) { flex-direction: row-reverse; }
   .timeline-content {
-    width: calc(50% - 40px);
-    text-align: right;
-  }
+  width: auto;
+  text-align: left;
+}
   .timeline-item:nth-child(odd) .timeline-content { text-align: left; }
-  .timeline-icon-wrap {
-    width: 80px; flex-shrink: 0;
-    display: flex; align-items: center; justify-content: center;
-  }
+ .timeline-icon-wrap {
+  width: 44px;
+  justify-content: center;
+}
   .timeline-icon {
     width: 44px; height: 44px;
     background: var(--white);

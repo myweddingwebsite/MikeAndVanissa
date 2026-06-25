@@ -297,9 +297,26 @@
 <body>
 
 <!-- AUDIO -->
-<audio autoplay loop>
+<button id="music-toggle">🎵</button>
+
+<audio id="bgMusic" loop>
   <source src="https://raw.githubusercontent.com/myweddingwebsite/MikeAndVanissa/main/Enchanted.mp3" type="audio/mpeg">
 </audio>
+
+<script>
+const music = document.getElementById('bgMusic');
+const btn = document.getElementById('music-toggle');
+
+btn.addEventListener('click', () => {
+  if (music.paused) {
+    music.play();
+    btn.textContent = '🔊';
+  } else {
+    music.pause();
+    btn.textContent = '🎵';
+  }
+});
+</script>
 
 <!-- LOADER -->
 <div id="loader">

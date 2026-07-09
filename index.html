@@ -349,6 +349,29 @@
     .entourage-pair-grid { grid-template-columns: 1fr 1fr; gap: 0 10px; }
     .entourage-pair-grid .entourage-names { font-size: 0.75rem; }
   }
+  .rsvp-btn{
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  gap:10px;
+  padding:16px 38px;
+  margin:20px 0;
+  background:var(--olive);
+  color:var(--white);
+  text-decoration:none;
+  font-family:var(--font-title);
+  font-size:0.7rem;
+  letter-spacing:0.25em;
+  text-transform:uppercase;
+  border:1px solid var(--olive);
+  transition:var(--transition);
+  border-radius:2px;
+}
+
+.rsvp-btn:hover{
+  background:transparent;
+  color:var(--olive);
+}
 </style>
 </head>
 <body>
@@ -800,13 +823,13 @@
     <div class="rsvp-deadline-label">RSVP DEADLINE</div>
     <div class="rsvp-deadline">July 25, 2026</div>
     <span class="rsvp-ornament">— ✦ —</span>
-    <iframe
-      src="https://script.google.com/macros/s/AKfycbwYmrIEtsiupETN4WqrziXIu8LjzUsBvIVTZRRrYpsgtWedhTQtP06Efrk5szEBTZ8Gjg/exec"
-      width="100%"
-      height="700"
-      frameborder="0"
-      loading="lazy">
-    </iframe>
+   <a
+  href="https://script.google.com/macros/s/AKfycbwYmrIEtsiupETN4WqrziXIu8LjzUsBvIVTZRRrYpsgtWedhTQtP06Efrk5szEBTZ8Gjg/exec"
+  target="_blank"
+  class="rsvp-btn">
+  <i class="fas fa-envelope-open-text"></i>
+  RSVP NOW
+</a>
     <p class="rsvp-reminder">"We kindly ask guests to RSVP before July 25, 2026."</p>
   </div>
 </section>
